@@ -1,0 +1,65 @@
+<div class="container-fluid loginDiv">
+
+	<div class="page-header ng-scope addPollHeader solidBlackBorder">
+		<h3>Sign Up</h3>
+	</div>
+
+	<div class="row errorBox" ng-show="hasError">
+		<div class="userErrDiv alert alert-danger">
+  			{{errorMsg}}
+		</div>
+	</div>
+	
+<form name="signupForm" class="marginTop10px"  novalidate ng-submit="doRegistration(signupForm.$valid)">
+		<fieldset class="fieldSetClass">
+		
+			<div class="form-group">
+				<label for="fname" class="bold h4Style greyText05 displayInline">First Name  </label>
+				<input id="fname" type="text" name="fname" ng-model="user.firstName" class="form-control greyText02 autoWidth displayInline"
+				 ng-class="{ 'hasError' : signupForm.fname.$invalid && !signupForm.fname.$pristine }"
+				 placeholder="Enter your first name"
+				 ng-pattern= "/^[a-zA-Z]{3,15}$/"
+				 required>
+				     <small ng-show="signupForm.fname.$invalid && !signupForm.fname.$pristine" class="smallInlineErr autoWidth redText help-block">{{fNameErrMsg}}</small>
+			</div>	
+
+			<div class="form-group">
+				<label for="lname" class="bold h4Style greyText05 displayInline">Last Name  </label>
+				<input id="lname" type="text" name="lname" ng-model="user.lastName" class="form-control greyText02 autoWidth displayInline"
+				 ng-class="{ 'hasError' : signupForm.lname.$invalid && !signupForm.lname.$pristine }"
+				 placeholder="Enter your last name"
+				 ng-pattern= "/^[a-zA-Z]{3,15}$/"
+				 required>
+				     <small ng-show="signupForm.lname.$invalid && !signupForm.lname.$pristine" class="smallInlineErr autoWidth redText help-block">{{lNameErrMsg}}</small>
+			</div>	
+
+			<div class="form-group">
+				<label for="email" class="bold h4Style greyText05 displayInline">Email ID  </label>
+				<input id="email" type="text" name="email" ng-model="user.email" class="form-control greyText02 autoWidth displayInline"
+				 ng-class="{ 'hasError' : signupForm.email.$invalid && !signupForm.email.$pristine }"
+				 placeholder="Enter your email address"
+				 ng-pattern= "/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/"
+				 required>
+				     <small ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="smallInlineErr autoWidth redText help-block">{{emailErrMsg}}</small>
+			</div>	
+
+			<div class="form-group">
+				<label for="password" class="bold h4Style greyText05 displayInline">Set Password  </label>
+				<span>&nbsp;</span>
+				<input type="password" id="password" name="password" ng-model="user.password" class="form-control greyText02 autoWidth displayInline"
+				ng-class="{ 'hasError' : signupForm.password.$invalid && !signupForm.password.$pristine }"
+				 placeholder="Enter your password"
+				 ng-pattern="/^[a-zA-Z0-9_@.#&~^%!]{6,15}$/"
+				 required > 
+				 	 <small ng-show="signupForm.password.$invalid && !signupForm.password.$pristine" class="smallInlineErr autoWidth redText help-block">{{passwordErrMsg}}</small>
+			</div>
+			<div class="form-group">
+				<center>
+					<button type="submit" ng-disabled="signupForm.$invalid" class="pointerCursor loginBtn btn btn-primary">Sign Up</button>
+				</center>
+			</div>
+	   </fieldset>
+	</form>  
+
+
+</div>

@@ -1,0 +1,216 @@
+@body-background : #DDD;
+@maroon-background : #350B07;
+@fontSize12 : 12px;
+@fontSize14 : 14px;
+@fontSize16 : 16px;
+@fontStyle : Helvetica,Arial,sans-serif;
+@color-sienna : sienna;
+@colorProp : color;
+@fontProp : font;
+@color-ccc : #ccc;
+@marginTop16px : 16px;
+@marginTopProp : margin-top;
+@marginLeftProp : margin-left;
+@width : width;
+@300px : 300px;
+@2px : 2px;
+@10px : 10px;
+@20px : 20px;
+@40px : 40px;
+@40per  : 40%;
+@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+              ~"only screen and (min--moz-device-pixel-ratio: 1.5)",
+              ~"only screen and (-o-min-device-pixel-ratio: 3/2)",
+              ~"only screen and (min-device-pixel-ratio: 1.5)";
+@mobile:      ~"only screen and (max-width: 529px)";
+@tablet:      ~"only screen and (min-width: 530px) and (max-width: 949px)";
+@desktop:     ~"only screen and (min-width: 950px) and (max-width: 1128px)";
+@desktop-xl:  ~"only screen and (min-width: 1129px)";
+
+
+body {
+	@media @desktop, @desktop-xl {
+      width: 850px !important;
+    }
+
+    @media @mobile {
+      width: 160px !important;
+    }
+
+    @media @tablet {
+      width: 579px !important;
+    }
+}
+
+.normalFont {
+	font-weight : normal !important;
+}
+.boldFont {
+	font-weight : bold !important;
+}
+.pointerCursor {
+	cursor: pointer;	
+}
+.defaultCursor {
+	cursor: default !important;	
+}
+.floatLeft {
+	float : left;
+}
+.floatRight {
+	float : right;
+}
+.divClear {
+	clear : both;
+}
+.displayInlineFlex {
+	display: inline-flex;
+}
+.displayInline {
+	display: inline !important;
+}
+.displayNone {
+	display : none;
+}
+.redText {
+	@{colorProp} : red;
+}
+.solidBlackBorder {
+	border-bottom : 1px solid #424242;
+}
+.bRadius {
+	border-radius : 4px;
+}
+.autoWidth {
+	@{width} : auto;
+}
+.maroonClass {
+	background-@{colorProp} : @maroon-background !important;
+	border-@{colorProp} : @maroon-background !important;
+}
+.alignCenter {
+	text-align : center;
+}
+.fontClass {
+	font-size : @fontSize12;
+	font-family : @fontStyle;
+}
+.marginTop16px{
+	@{marginTopProp}: @marginTop16px;
+}
+.marginTop20px{
+	@{marginTopProp}: @20px;	
+}
+.marginTop30px{
+	@{marginTopProp} : @20px + @10px;
+}
+.body {
+	@{colorProp} : @body-background;
+	.fontClass
+}
+.pollHeader {
+	background-@{colorProp} : @maroon-background;
+	border-@{colorProp} : @maroon-background;
+}
+.colorSienna {
+	@{colorProp} : @color-sienna !important;
+}
+.color-ccc {
+	@{colorProp} : @color-ccc;
+}
+.headerNav {
+	.maroonClass
+}
+.footer {
+	.marginTop20px
+}
+.footerSection {
+	 min-height: 50px;
+	 @{marginTopProp}: @marginTop16px;
+	 .bRadius;
+	 .maroonClass
+}
+.footerLbl{
+	.marginTop16px
+}
+.searchDiv, .addPollDiv, .viewPollDiv {
+	@{marginTopProp} : -@marginTop16px;
+}
+.searchBoxDiv {
+	display : inline !important;
+	.bRadius
+}
+#searchBox {
+	.bRadius
+}
+.errDiv{
+	@{marginLeftProp} : auto !important;
+	margin-botton : 15px !important;
+}
+.addPollHeader, .viewPollHeader {
+	margin : 0px 0 15px !important;
+	padding-bottom : 0px !important;
+}
+.pollBox {
+	padding-top: 20px !important;
+    padding-bottom: 22px !important;
+    padding-left: 48px !important;
+    background-color: aliceblue !important;
+}
+.choiceDiv {
+	@{marginLeftProp}: @fontSize14;
+	@{marginTopProp} : @marginTop16px - 8;
+}
+.marginTopMinus15px {
+	@{marginTopProp} : -@marginTop16px + 1;	
+}
+.marginLeftMinus15px {
+	@{marginLeftProp} : -@marginTop16px + 1;	
+}
+.barChartDiv {
+	margin-bottom : @marginTop16px + 11;
+	.alignCenter
+}
+.modal-content {
+	height : @20px * 10;
+}
+.marginBottom8px {
+	margin-bottom: @10px - 2 !important;
+}
+.removeIcon {
+	.floatRight;
+	.pointerCursor;
+}
+.errorBox {
+	@{marginLeftProp}: 0px;
+    @{width}: @300px * 3 + @40px * 5 !important;
+}
+.legendClass {
+	border-style : none !important;
+	margin-bottom : 0px !important;
+}
+.loginBtn[disabled] {
+	.defaultCursor
+}
+.loginDiv {
+	background-@{colorProp} : aliceblue;
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    @{width}: @300px + @20px + @10px;
+}
+.marginLeft40px {
+	@{marginLeftProp} : @40per;
+}
+.smallInlineErr {
+	@{marginLeftProp} : 82px;
+}
+.fontSize16 {
+	font-size : @fontSize16;
+}
+.userErrDiv {
+	@{width}: @300px !important;
+}
+.googlePlusBtn {
+	@{width} : 53%;
+	margin-botton : @marginTop16px - 1;
+}

@@ -1,0 +1,49 @@
+<div class="container-fluid searchDiv">
+	<div class="page-header ng-scope addPollHeader">
+		<h3>Search Polls</h3>
+	</div>
+
+	<div ng-show="isNewPollAdded">
+		<ng-include src="'views/successTmpl.htm'" scope=""></ng-include>
+	</div>
+
+	
+	<form role="form" name="searchForm" ng-submit="searchPolls()">
+	
+	<div class="row">
+		<div class="col-md-8">
+			<div class="input-group searchBoxDiv">
+				<input type="search" ng-model="searchQueryModel.searchText" name="searchPolls" id="searchBox" class="col-md-8 form-control" value="" required="required" maxLength="100"
+					placeholder="Enter your search criteria here..."
+					ng-change="hideSuccessMsg()" >
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button> 
+		&nbsp;
+		<a class="btn btn-primary" href="#/addPoll" role="button">Add Poll</a>
+	</div>
+	</form>
+	<div class="jumbotron pollBox" ng-show= "displayRecords">
+		<div class="row">
+			<h5><strong>{{searchResult}}({{totalRecords}})</strong></h5>
+		</div>
+        <ul>
+        	<div class="row">
+	            <li class="" ng-repeat="poll in pollList">
+	                <a href="#/getPoll/{{poll._id}}">{{ poll.question }}</a>
+	                <span>
+	            	  <span class="glyphicon glyphicon-remove removeIcon" id="{{poll._id}}" ng-click="deletePoll($event)"></span>
+	        	</span>
+	            </li>
+	            
+        	</div>
+        </ul>
+    </div>
+    <div class="" ng-show= "displayWarning">
+		<ng-include src="'views/errorTemplate.htm'"></ng-include>
+    </div>
+	<div class="row" ng-show="hasError">
+		<ng-include src="'views/errorTemplate.htm'" scope=""></ng-include>
+	</div>
+	
+</div>

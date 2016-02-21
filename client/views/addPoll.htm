@@ -1,0 +1,31 @@
+<div class="container-fluid addPollDiv">
+
+	<div class="page-header ng-scope addPollHeader">
+		<h3>Add New Poll</h3>
+	</div>
+	<div class="row errorBox" ng-show="hasError">
+		<ng-include src="'views/errorTemplate.htm'" scope=""></ng-include>
+	</div>
+	<form role="form" name="addPollForm" ng-submit="addNewPoll($event)">
+	
+		<div class="form-group">
+			<label for="question">Question</label>
+			<input type="text" maxLength="150" class="form-control" id=""  placeholder="Enter poll question" ng-model="pollModel.question"required>
+		</div>
+
+		<div class="form-group">
+			<label for="choice">Multiple Choices</label>
+			<div ng-repeat="choice in pollModel.multipleChoices">
+				<input type="text" maxLength="150" class="form-control" id=""  placeholder="Enter choice {{$index + 1}}" ng-model="choice.text" required>
+				<br>
+			</div>
+		</div>
+	
+		<button ng-click="addChoice()" ng-disabled="choiceLimit" class="btn btn-primary">Add Another Choice</button>
+		<hr>
+		<div class="floatLeft"><a role="button" class="btn btn-primary" href="#/search">Back To Search</a></div>
+		<div class="floatRight"><button type="submit" class="btn btn-primary">Add Poll</button>
+	</form>
+
+	
+</div>
