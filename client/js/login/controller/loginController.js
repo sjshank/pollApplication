@@ -14,6 +14,7 @@ define(['app',
                 $scope.hasError = false;
                 $rootScope.showLogout = false;
 
+
                 FB.init({
                       appId      : '1551906885119402',
                       status     : true,

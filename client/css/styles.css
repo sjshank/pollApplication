@@ -132,7 +132,7 @@
   padding-top: 20px !important;
   padding-bottom: 22px !important;
   padding-left: 48px !important;
-  background-color: aliceblue !important;
+  background-color: threedlightshadow !important !important;
 }
 .choiceDiv {
   margin-left: 14px;
@@ -170,8 +170,8 @@
   cursor: default !important;
 }
 .loginDiv {
-  background-color: aliceblue;
-  border: 1px solid aliceblue;
+  background-color: threedlightshadow ;
+  border: 1px solid threedlightshadow;
   border-radius: 5px;
   width: 330px;
 }
@@ -190,4 +190,15 @@
 .googlePlusBtn {
   width: 53%;
   margin-botton: 15px;
+}
+.votingResultDiv {
+  border: 1px solid activeborder;
+  width: 100%;
+  padding-bottom: 25px;
+  border-radius: 4px;
+}
+.resultSec {
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
 }

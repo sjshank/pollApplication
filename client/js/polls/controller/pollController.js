@@ -2,32 +2,46 @@ define(['app',
 	 	'polls/service/pollService',
 		'utils/pollAppUtils',
 		'utils/pollAppDirectives',
-		'fusionChart',
+		'utils/pollAppConstants',
+		//'fusionChart',
 		'angChart',
 		'uiBootstrap'],
 		function(pollsApp,
 				pollService,
 				pollAppUtils,
 				pollAppDirectives,
-				fusionChart,
+				pollAppConstants,
+				//fusionChart,
 				angChart,
 				uiBootstrap) {
 
-			pollsApp.controller('getPollCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'pollService', 'checkResponseService',
-					 function($scope, $rootScope, $routeParams, $location, PollService, checkResponseService){
+
+			/*
+			*	Controller for retrieving poll based on poll id
+			*/
+			pollsApp.controller('getPollCtrl', ['$scope', '$rootScope', '$routeParams',
+								 '$location', 'pollService', 'checkResponseService', 'pollConstants',
+					 function($scope, $rootScope, $routeParams, $location,
+					 			 PollService, checkResponseService, pollConstants){
 								
 				$scope.poll = {};
 				$scope.displayChart = false;
 				$scope.displayChoices = true;
 				$scope.disableVoteBtn = false;
 				$scope.totalVotes  = 0;
-				$scope.myDataSource = {
+				$scope.ChartTypes = ['chart-bar', 'chart-pie', 'chart-doughnut'];
+				$scope.selectedItem = "chart-doughnut";
+				$scope.chartClass = $scope.selectedItem;
+				var optSelected = "";
+
+								/*$scope.myDataSource = {
 						                chart: {
 						                    caption: "Voting Summary",
 						                    bgColor: "#F0F8FF !important"
 						                },
 						                data:[],
-						            };
+						            };*/
+				
 				PollService.getPoll(
            		 		{
 			               id : $routeParams.pollID
@@ -48,7 +62,7 @@ define(['app',
             			}
             			$scope.hasError = false;
             			for(var i=0; i <= $scope.poll.multipleChoices.length - 1; i++){
-            				var optSelected = "";
+            				
             				if($scope.addPollForm.choiceSelected === $scope.poll.multipleChoices[i]['choiceID']){
             					optSelected = $scope.poll.multipleChoices[i]['text'];
             					$scope.poll.multipleChoices[i]['numberOfVotes'] = $scope.poll.multipleChoices[i]['numberOfVotes'] + 1;
@@ -62,38 +76,58 @@ define(['app',
             			}).$promise.then(function(response){
             				if(checkResponseService.checkResponse(response, $scope, true)){
             					$scope.poll = response.data;
-            					renderChart($scope, optSelected);
+            					renderChart($scope, optSelected, pollConstants);
             				}
             			}, function(err){
             				checkResponseService.checkResponse(err, $scope, false);
             			});
             	};
 
+            	$scope.changeChart = function(sItem){
+            		$scope.chartClass = sItem;
+            		renderChart($scope, optSelected, pollConstants);
+            	}
 
 
 			}]);
 
+			pollAppDirectives(pollsApp);
 
-
-			function renderChart($scope, optSelected){
+			function renderChart($scope, optSelected, pollConstants){
 				if($scope.poll.voted){
 
-            						$scope.myDataSource.data = [];
-            						for(var i=0; i <= $scope.poll.multipleChoices.length - 1; i++){
-            							$scope.totalVotes = $scope.totalVotes + $scope.poll.multipleChoices[i]['numberOfVotes'];
-	            							$scope.myDataSource.data.push({
+            						$scope.myDataSource = {
+										labels : [],
+										data : [],
+										colors : []
+									};
+									$scope.totalVotes = 0;
+            						$scope.poll.multipleChoices.forEach(function(val, index, choices){
+
+            							$scope.totalVotes = $scope.totalVotes + val['numberOfVotes'];
+	         							$scope.myDataSource.labels.push(val['text']);
+	         							$scope.myDataSource.data.push(val['numberOfVotes']);
+	         							$scope.myDataSource.colors.push(pollConstants.COLORS[index]);
+
+	         							/*$scope.myDataSource.data.push({
 	            								'label' : $scope.poll.multipleChoices[i]['text'],
 	            								'value' : $scope.poll.multipleChoices[i]['numberOfVotes']
-	            							});
-            						}	
-            							$scope.myDataSource.chart['subCaption'] = "Total " + $scope.totalVotes  + " votes has been counted so far." +
-            																	  " You voted for " + optSelected;  
+	            							});*/
+            						});
+            							/*$scope.myDataSource.chart['subCaption'] = "Total " + $scope.totalVotes  + " votes has been counted so far." +
+            																	  " You voted for " + optSelected; */ 
+            							$scope.optSelected = optSelected;
             							$scope.displayChart = true;
 	            						$scope.displayChoices = false;
 	            						$scope.disableVoteBtn = true;
             					}
             };
 
+
+
+			/*
+			*	Controller for adding new poll
+			*/
 
 			pollsApp.controller('addPollCtrl', ['$scope', '$rootScope', '$location', 'pollService', 'pollModelFactory', 'checkResponseService',
 					 function($scope, $rootScope, $location, PollService, pollModelFactory, checkResponseService){
@@ -131,7 +165,6 @@ define(['app',
             					if(response.result){
             						$rootScope.isNewPollAdded = true;
             						$location.path("search");
-    								//$scope.showModal = true;
             					}
             				}
             			}, function(err){

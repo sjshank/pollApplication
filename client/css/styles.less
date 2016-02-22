@@ -155,7 +155,7 @@ body {
 	padding-top: 20px !important;
     padding-bottom: 22px !important;
     padding-left: 48px !important;
-    background-color: aliceblue !important;
+    background-color: threedlightshadow !important !important;
 }
 .choiceDiv {
 	@{marginLeftProp}: @fontSize14;
@@ -193,8 +193,8 @@ body {
 	.defaultCursor
 }
 .loginDiv {
-	background-@{colorProp} : aliceblue;
-    border: 1px solid aliceblue;
+	background-@{colorProp} : threedlightshadow ;
+    border: 1px solid threedlightshadow;
     border-radius: 5px;
     @{width}: @300px + @20px + @10px;
 }
@@ -213,4 +213,15 @@ body {
 .googlePlusBtn {
 	@{width} : 53%;
 	margin-botton : @marginTop16px - 1;
+}
+.votingResultDiv {
+	border: 1px solid activeborder;
+    width: 100%;
+    padding-bottom: @20px + 5px;
+    .bRadius
+}
+.resultSec {
+	padding-left: 15px;
+    padding-right: 15px;
+    .alignCenter
 }

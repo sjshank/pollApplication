@@ -15,6 +15,7 @@
   "dependencies": {
     "angular": "^1.2.29",
     "angular-amd": "^0.2.1",
+    "angular-chart.js": "^0.8.8",
     "angular-cookies": "^1.2.29",
     "angular-datatables": "^0.5.2",
     "angular-google-plus": "^0.1.2",
@@ -24,6 +25,7 @@
     "bindings": "^1.2.1",
     "body-parser": "^1.14.1",
     "bootstrap": "^3.3.6",
+    "chart.js": "^1.0.2",
     "connect": "^3.4.1",
     "connect-mongo": "^1.1.0",
     "cookie-parser": "^1.4.0",

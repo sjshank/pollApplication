@@ -1,18 +1,17 @@
 define(['angularAMD',
 		'angular',
-		'angRoute',
-		'jquery'],
+		'angRoute'],
 	function(angularAMD,
 			 angular,
-			 angRoute,
-			 $){
+			 angRoute){
 
 	return function(webApp){
 		var _self = this;
 		'use strict';
 
 		webApp.constant('pollConstants', {
-			SERVICE_ERROR : "Service is temporarily unavailable. Please try after sometime."
+			SERVICE_ERROR : "Service is temporarily unavailable. Please try after sometime.",
+			COLORS : ['#0D8ECF','#F8FF01','#FCD202', '#FF6600', '#0D52D1']
 		});
 
 		webApp.run([ '$rootScope', function($rootScope) {

@@ -1,5 +1,5 @@
 
-define(['jQuery',
+define([//'jQuery',
         'fusionChart',
         'angular',
         'angRoute',
@@ -13,8 +13,10 @@ define(['jQuery',
         'angChart',
         'uiBootstrap',
         'anGoogleplus',
-        'angCookies'],
-        function($,
+        'angCookies',
+        'chart',
+        'angularChart'],
+        function(//$,
                  fusionChart,
                  angular,
                  angRoute,
@@ -28,12 +30,14 @@ define(['jQuery',
                  angChart,
                  uiBootstrap,
                  anGoogleplus,
-                 angCookies) {
+                 angCookies,
+                 chart,
+                 angularChart) {
 
         //var _self = this;
         'use strict';
 
-        var webApp = angular.module("pollsApp", ["ngRoute", "ngResource", "ng-fusioncharts", "ui.bootstrap", "googleplus", "ngCookies"], function($httpProvider){});
+        var webApp = angular.module("pollsApp", ["ngRoute", "ngResource", "ng-fusioncharts", "ui.bootstrap", "googleplus", "ngCookies", "chart.js"], function($httpProvider){});
         router(webApp);
         auth(webApp);
         pollAppConstants(webApp);

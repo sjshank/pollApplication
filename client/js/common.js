@@ -1,8 +1,8 @@
 require.config({
 	baseUrl : "/",
 	paths : {
-		jQuery : "js/lib/jquery_1_10_min",
-		dataTable : "datatables/media/js/jquery.dataTables.min",
+		/*jQuery : "js/lib/jquery_1_10_min",
+		dataTable : "datatables/media/js/jquery.dataTables.min",*/
 		fusionChart : "js/lib/fusionCharts/fusioncharts",
 		angular : "angular/angular.min",
 		anGoogleplus : "angular-google-plus/dist/angular-google-plus.min",
@@ -13,6 +13,8 @@ require.config({
 		angCookies : "angular-cookies/angular-cookies.min",
 		angChart : "js/lib/fusionCharts/angular-fusioncharts.min",
 		uiBootstrap : "js/lib/bootstrap-ui/ui-bootstrap-tpls",
+		angularChart : "angular-chart.js/dist/angular-chart.min",
+        chart : "chart.js/Chart.min",
 		login : "js/login",
 		search  : "js/search",
 		polls : "js/polls",
@@ -22,9 +24,9 @@ require.config({
 		facebook: 'fb/sdk/all'
 	},
 	shim : {
-        "dataTable": { 
+        /*"dataTable": { 
             exports: "dataTable"
-        },
+        },*/
         "angular": {
             exports: "angular"
         },
@@ -46,6 +48,10 @@ require.config({
         "angChart" : {
         	deps: ["angular"],
             exports : "angChart"	
+        },
+        "angularChart" : {
+            deps: ["angular", "chart"],
+            exports : "angularChart"
         },
         "uiBootstrap" : {
         	deps: ["angular"],
