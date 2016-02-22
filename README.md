@@ -4,4 +4,4 @@ Note: This app is still under construction
 
 # Poll Application
 
-Search/Add your questions and cast you vote
+Search or Add your poll questions and cast your vote
