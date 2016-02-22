@@ -17,10 +17,13 @@
 			</div>
 
 			<div class="choiceDiv" ng-show="displayChoices">
-				<h4 class="marginLeftMinus15px"><strong>{{choicesText}}</strong></h4>
+				<h4 class="marginLeftMinus15px"><strong>{{displayChart ? choicesText : selectOptnTxt}}</strong></h4>
 				<div class="row" ng-repeat="choice in poll.multipleChoices">
 					<div class="displayInlineFlex">
 						<input type="radio" name="gender" ng-model="addPollForm.choiceSelected" value="{{choice.choiceID}}" id="{{choice.choiceID}}">
+
+						<!-- <span ng-show="{'displayNone' : !displayChart}">{{$index}}</span> -->
+
 						<label class="normalFont">&nbsp;{{choice.text}}</label>
 					</div>
 					
@@ -41,16 +44,17 @@
 		<center>
 			<div class="col-xs-12 col-md-8 votingResultDiv">
 				<h3>
-					<strong>Voting Summary</strong>
+					<strong><u>Voting Summary</u></strong>
 				</h3>
-					<select ng-model="selectedItem" style="margin-top: -2px;" class="floatRight" ng-options="chartType for chartType in ChartTypes" ng-change="changeChart(selectedItem)">
+					<select ng-model="selectedItem" style="margin-top: -2px;font-size: 14px;" class="floatRight" ng-options="chartType for chartType in ChartTypes" ng-change="changeChart(selectedItem)">
 					</select>
 				
 				<h5>Total {{totalVotes}} votes has been counted so far. You have voted for <b>{{optSelected}}</b></h5>
 				<br>
-				<canvas id="pollDoughnut" class="chart chart-doughnut" ng-class="chartClass" 
-			  		 chart-data="myDataSource.data" chart-colours="myDataSource.colors" chart-labels="myDataSource.labels" chart-series="myDataSource.labels">
-				</canvas> 
+				<canvas id="base" class="chart-base" chart-type="type"
+  					chart-data="myDataSource.data" chart-colours="myDataSource.colors" chart-labels="myDataSource.labels" >
+				</canvas>
+
 			</div>
 		</center>
 	</div>

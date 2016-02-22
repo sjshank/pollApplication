@@ -19,7 +19,8 @@ define(['angularAMD',
 			$rootScope.persistQuery = false;
 			$rootScope.successMsg = "Poll has been added successfully";
 			$rootScope.searchResult = "Search Results : Number of records matching search criteria ";
-			$rootScope.choicesText = "Please select one from the following choices and caste you vote :";
+			$rootScope.selectOptnTxt = "Please select one from the following choices and caste you vote :";
+			$rootScope.choicesText = "Multiple choices are :";
 			$rootScope.errorMsg = "No records found based on searched criteria";
 			$rootScope.emailErrMsg = "Please enter valid email id";
 			$rootScope.passwordErrMsg = "Please enter valid password";

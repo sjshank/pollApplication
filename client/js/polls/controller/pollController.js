@@ -29,9 +29,9 @@ define(['app',
 				$scope.displayChoices = true;
 				$scope.disableVoteBtn = false;
 				$scope.totalVotes  = 0;
-				$scope.ChartTypes = ['chart-bar', 'chart-pie', 'chart-doughnut'];
-				$scope.selectedItem = "chart-doughnut";
-				$scope.chartClass = $scope.selectedItem;
+				$scope.ChartTypes = ['PolarArea', 'Pie', 'Doughnut'];
+				$scope.selectedItem = "Doughnut";
+				$scope.type = $scope.selectedItem;
 				var optSelected = "";
 
 								/*$scope.myDataSource = {
@@ -84,7 +84,7 @@ define(['app',
             	};
 
             	$scope.changeChart = function(sItem){
-            		$scope.chartClass = sItem;
+            		$scope.type = sItem;
             		renderChart($scope, optSelected, pollConstants);
             	}
 
